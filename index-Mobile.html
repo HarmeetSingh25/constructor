@@ -11,7 +11,62 @@
         constructor() {
           this.mobiles = [];
         }
+        addMobile(Mobile) {
+          this.mobiles.push(Mobile);
+        }
+        RemoveMobile() {}
+        LisAllMobile() {
+          console.log(this.mobiles);
+        }
       }
+      class MobileCreate {
+        constructor(comapany, color, price, model) {
+          this.comapany = comapany;
+          this.color = color;
+          this.price = price;
+          this.model = model;
+          this.sim = [];
+          this.id = Math.floor(Math.random() * 999999 + 10000);
+        }
+        GetMobile() {
+          console.log(
+            `The phone brand name is ${this.comapany} Color available of this phone is ${this.color} price of this phone ${this.price} and last model name is ${this.model} Sim inserted}`
+          );
+        }
+        InstallSim(sims) {
+          if (this.sim == 2) {
+            console.log("you slot is full");
+          }
+          this.sim.push(...sims);
+          // console.log(sims);
+        }
+        getSim() {
+          if (this.sim.length == 0)
+            console.error(`sim slot is empty instert the sim `);
+
+          if ((this.sim.length ==1))
+            console.log(`Sim name is ${this.sim[0].Brand}`);
+          if ((this.sim.length == 2))
+            console.log(
+              `sim names is ${this.sim[0].Brand} and ${this.sim[1].Brand}`
+            );
+          else {
+            console.error(`sim slot is full`);
+          }
+        }
+      }
+      class Sim {
+        constructor(Brand, Balance) {
+          this.Brand = Brand;
+          this.Balance = Balance;
+        }
+      }
+      let HarmeetMobileShop = new MobileShop();
+      let Samsung = new MobileCreate("Samsung", "black", 120000, "S21 Ultra");
+      let Airtel = new Sim("Airtel", 300);
+      let jio = new Sim("JIO", 300);
+      Samsung.InstallSim([Airtel, jio]);
+      HarmeetMobileShop.addMobile(Samsung);
     </script>
   </body>
 </html>
