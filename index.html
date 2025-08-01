@@ -12,11 +12,11 @@
           this.books = [];
         }
         addBook(book) {
-          this.books.push(book);
+          this.books.push(...book);
         }
         ListAllBooks() {
-          this.books.forEach((book) => {
-            console.log(book);
+          this.books.forEach((book, index) => {
+            console.log(index + 1 + " " + book.name);
           });
         }
       }
@@ -52,8 +52,14 @@
         150,
         "jfbsdkfbsdkfbsd"
       );
-      b1.addBook("wealth is life");
-      b1.addBook(Bussiness);
+      let LifeIsWealth = new Books(
+        "Life is wealth",
+        "zikra ",
+        200,
+        "jfbsdkfbsdkfbsd"
+      );
+      let MyDad = new Books("My Dad", "Amar ", 1500, "jfbsdkfbsdkfbsd");
+      b1.addBook([Bussiness, LifeIsWealth, MyDad]);
       b1.ListAllBooks();
     </script>
   </body>
