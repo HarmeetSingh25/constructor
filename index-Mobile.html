@@ -12,9 +12,16 @@
           this.mobiles = [];
         }
         addMobile(Mobile) {
-          this.mobiles.push(Mobile);
+          this.mobiles.push(...Mobile);
         }
-        RemoveMobile() {}
+        RemoveMobile(comapany) {
+          let index = (this.mobiles = this.mobiles.filter(
+            (mobile) => mobile.comapany !== comapany
+          ));
+          if (index !== -1) {
+            this.mobiles.splice(index, 0);
+          }
+        }
         LisAllMobile() {
           console.log(this.mobiles);
         }
@@ -44,9 +51,9 @@
           if (this.sim.length == 0)
             console.error(`sim slot is empty instert the sim `);
 
-          if ((this.sim.length ==1))
+          if (this.sim.length == 1)
             console.log(`Sim name is ${this.sim[0].Brand}`);
-          if ((this.sim.length == 2))
+          if (this.sim.length == 2)
             console.log(
               `sim names is ${this.sim[0].Brand} and ${this.sim[1].Brand}`
             );
@@ -63,10 +70,18 @@
       }
       let HarmeetMobileShop = new MobileShop();
       let Samsung = new MobileCreate("Samsung", "black", 120000, "S21 Ultra");
+      let Apple = new MobileCreate(
+        "Apple",
+        "black",
+        120000,
+        "iphone 15 pro MAX"
+      );
+      let realme = new MobileCreate("realme", "black", 120000, "realme p1");
       let Airtel = new Sim("Airtel", 300);
       let jio = new Sim("JIO", 300);
       Samsung.InstallSim([Airtel, jio]);
-      HarmeetMobileShop.addMobile(Samsung);
+      HarmeetMobileShop.addMobile([Samsung, Apple, realme]);
+      // HarmeetMobileShop.RemoveMobile("Samsung")
     </script>
   </body>
 </html>
