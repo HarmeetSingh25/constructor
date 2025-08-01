@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Library {
+        constructor(book) {
+          this.books = [];
+        }
+        addBook(book) {
+          this.books.push(book);
+        }
+        ListAllBooks() {
+          this.books.forEach((book) => {
+            console.log(book);
+          });
+        }
+      }
+      class Books {
+        constructor(name, author, price, ibn) {
+          this.name = name;
+          this.author = author;
+          this.price = price;
+          this.ibn = ibn;
+          this.IsReadIt = false;
+        }
+        info() {
+          console.log(
+            `${this.IsReadIt ? "✅✅" : "❌❌"}The book name is ${
+              this.name
+            } and the author of this book ${this.author} price of this book ${
+              this.price
+            } you are ${
+              this.IsReadIt
+                ? "already read this book ✅ "
+                : "not read this book ❌"
+            }`
+          );
+        }
+        Readit() {
+          this.IsReadIt = !this.IsReadIt;
+        }
+      }
+      let b1 = new Library();
+      let Bussiness = new Books(
+        "Bussiness",
+        "Harmeet ",
+        150,
+        "jfbsdkfbsdkfbsd"
+      );
+      b1.addBook("wealth is life");
+      b1.addBook(Bussiness);
+      b1.ListAllBooks();
+    </script>
+  </body>
+</html>
