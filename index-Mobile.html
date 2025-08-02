@@ -24,7 +24,7 @@
         }
         GetMobileList() {
           this.Mobiles.forEach((Mobile) => {
-            console.log(Mobile.Company);
+            console.log(Mobile);
           });
         }
       }
@@ -38,10 +38,20 @@
           this.sim = [];
         }
         InstalSim(sim) {
-          if (this.sim == 2) {
+          if (this.sim.length == 2) {
             console.error("Slot is full");
           }
           this.sim.push(...sim);
+        }
+        SimInfo() {
+          if (this.sim.length == 1)
+            console.log(
+              `In this phone have  one sim ${this.sim[0].Brand} and the balance is ${this.sim[0].Balance}`
+            );
+          if (this.sim.length == 2)
+            console.log(
+              `In this phone have  Two sim = First sim Brand is ${this.sim[0].Brand} and the balance remain in   ${this.sim[0].Balance} Second sim Brand is ${this.sim[1].Brand} and the balance remain  ${this.sim[1].Balance} `
+            );
         }
       }
       class CreateSim {
