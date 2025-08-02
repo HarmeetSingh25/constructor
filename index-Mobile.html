@@ -16,17 +16,16 @@
         }
         RemoveMobile(Company) {
           let index = this.Mobiles.findIndex(
-            (Company) => Mobiles.Company === Company
+            (Mobile) => Mobile.Company === Company
           );
           if (index !== -1) {
-            this.Mobiles.splice(index, 0);
+            this.Mobiles.splice(index, 1);
           }
         }
         GetMobileList() {
-          this.Mobiles.forEach((Mobiles, index) => {
-            console.log(this.Mobiles[index].Company  );
+          this.Mobiles.forEach((Mobile) => {
+            console.log(Mobile.Company);
           });
-         
         }
       }
       class MobileFactor {
@@ -65,7 +64,7 @@
       let Vodaphone = new CreateSim("Vodophone", 200);
       myshop.AddMobile([samsung, realme]);
       samsung.InstalSim([Airtel, JIO]);
-
+      // myshop.RemoveMobile("samsung");
     </script>
   </body>
 </html>
