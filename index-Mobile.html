@@ -9,79 +9,63 @@
     <script>
       class MobileShop {
         constructor() {
-          this.mobiles = [];
+          this.Mobiles = [];
         }
-        addMobile(Mobile) {
-          this.mobiles.push(...Mobile);
+        AddMobile(MobileDetails) {
+          this.Mobiles.push(...MobileDetails);
         }
-        RemoveMobile(comapany) {
-          let index = (this.mobiles = this.mobiles.filter(
-            (mobile) => mobile.comapany !== comapany
-          ));
-          if (index !== -1) {
-            this.mobiles.splice(index, 0);
-          }
-        }
-        LisAllMobile() {
-          console.log(this.mobiles);
-        }
-      }
-      class MobileCreate {
-        constructor(comapany, color, price, model) {
-          this.comapany = comapany;
-          this.color = color;
-          this.price = price;
-          this.model = model;
-          this.sim = [];
-          this.id = Math.floor(Math.random() * 999999 + 10000);
-        }
-        GetMobile() {
-          console.log(
-            `The phone brand name is ${this.comapany} Color available of this phone is ${this.color} price of this phone ${this.price} and last model name is ${this.model} Sim inserted}`
+        RemoveMobile(Company) {
+          let index = this.Mobiles.findIndex(
+            (Company) => Mobiles.Company === Company
           );
-        }
-        InstallSim(sims) {
-          if (this.sim == 2) {
-            console.log("you slot is full");
+          if (index !== -1) {
+            this.Mobiles.splice(index, 0);
           }
-          this.sim.push(...sims);
-          // console.log(sims);
         }
-        getSim() {
-          if (this.sim.length == 0)
-            console.error(`sim slot is empty instert the sim `);
-
-          if (this.sim.length == 1)
-            console.log(`Sim name is ${this.sim[0].Brand}`);
-          if (this.sim.length == 2)
-            console.log(
-              `sim names is ${this.sim[0].Brand} and ${this.sim[1].Brand}`
-            );
-          else {
-            console.error(`sim slot is full`);
-          }
+        GetMobileList() {
+          this.Mobiles.forEach((Mobiles, index) => {
+            console.log(this.Mobiles[index].Company  );
+          });
+         
         }
       }
-      class Sim {
+      class MobileFactor {
+        constructor(Company, model, price, color) {
+          this.Company = Company;
+          this.model = model;
+          this.price = price;
+          this.color = color;
+          this.emi = Math.floor(Math.random() * 100000) + 9000;
+          this.sim = [];
+        }
+        InstalSim(sim) {
+          if (this.sim == 2) {
+            console.error("Slot is full");
+          }
+          this.sim.push(...sim);
+        }
+      }
+      class CreateSim {
         constructor(Brand, Balance) {
           this.Brand = Brand;
           this.Balance = Balance;
         }
+        AddBalance(InsertBalance) {
+          if (InsertBalance > 0) this.Balance += InsertBalance;
+        }
+        CheckBalance() {
+          console.log(this.Balance);
+        }
       }
-      let HarmeetMobileShop = new MobileShop();
-      let Samsung = new MobileCreate("Samsung", "black", 120000, "S21 Ultra");
-      let Apple = new MobileCreate(
-        "Apple",
-        "black",
-        120000,
-        "iphone 15 pro MAX"
-      );
-      let realme = new MobileCreate("realme", "black", 120000, "realme p1");
-      let Airtel = new Sim("Airtel", 300);
-      let jio = new Sim("JIO", 300);
-      Samsung.InstallSim([Airtel, jio]);
-      HarmeetMobileShop.addMobile([Samsung, Apple, realme]);
-      // HarmeetMobileShop.RemoveMobile("Samsung")
+      let myshop = new MobileShop();
+      let samsung = new MobileFactor("samsung", "S21 ultra", 120000, "Grey");
+      let realme = new MobileFactor("realme", "p1", 12000, "Brown");
+      let Airtel = new CreateSim("Airtel", 300);
+      let JIO = new CreateSim("JIO", 580);
+      let Vodaphone = new CreateSim("Vodophone", 200);
+      myshop.AddMobile([samsung, realme]);
+      samsung.InstalSim([Airtel, JIO]);
+
     </script>
   </body>
 </html>
